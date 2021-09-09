@@ -1,0 +1,331 @@
+PS D:\Develop\Ruby\UNaHur\Clase 3\src> irb
+irb(main):001:0> pegaso = Pegaso.new
+Traceback (most recent call last):
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        3: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        2: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        1: from (irb):1
+NameError (uninitialized constant Pegaso)
+irb(main):002:0> load "pegaso.rb"
+=> true
+irb(main):003:0> pegaso = Pegaso.new
+=> #<Pegaso:0x00000280ab7da108 @energia=100, @esfuerzo_volar=5, @esfuerzo_correr=1>
+irb(main):004:0> pegaso.class
+=> Pegaso
+irb(main):005:0> pegaso.class.superclass
+=> Object
+irb(main):006:0> pegaso.class.ancestors
+=> [Pegaso, Volador, Corredor, Object, Kernel, BasicObject]
+irb(main):007:0> Pegaso.class
+=> Class
+irb(main):008:1* pegaso.class.ancestors.each {|klass|
+irb(main):009:1*   klass.class
+irb(main):010:0> }
+=> [Pegaso, Volador, Corredor, Object, Kernel, BasicObject]
+irb(main):011:1* pegaso.class.ancestors.each {|klass|
+irb(main):012:1*  puts klass.class
+irb(main):013:0> }
+Class
+Module
+Module
+Class
+Module
+Class
+=> [Pegaso, Volador, Corredor, Object, Kernel, BasicObject]
+irb(main):014:0> pegaso.instance_variable
+Traceback (most recent call last):
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        3: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        2: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        1: from (irb):14
+NoMethodError (undefined method `instance_variable' for #<Pegaso:0x00000280ab7da108>)
+Did you mean?  instance_variables
+               instance_variable_get
+               instance_variable_set
+irb(main):015:0> pegaso.instance_variables
+=> [:@energia, :@esfuerzo_volar, :@esfuerzo_correr]
+irb(main):016:0> pegaso.instance_variable_get(:@energia)
+=> 100
+irb(main):017:0> pegaso.instance_variable_set(:@energia, 10)
+=> 10
+irb(main):018:0> pegaso.energia
+=> 10
+irb(main):019:0> pegaso.energia = 18
+Traceback (most recent call last):
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        3: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        2: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        1: from (irb):19
+NoMethodError (undefined method `energia=' for #<Pegaso:0x00000280ab7da108>)
+Did you mean?  energia
+irb(main):020:0> pegaso.methods
+=> [:volar, :esfuerzo_volar=, :energia, :esfuerzo_volar, :esfuerzo_correr=, :correr, :esfuerzo_correr, :dup, :itself, :yield_self, :t
+hen, :taint, :tainted?, :untaint, :untrust, :untrusted?, :trust, :frozen?, :methods, :singleton_methods, :protected_methods, :private
+_methods, :public_methods, :instance_variables, :instance_variable_get, :instance_variable_set, :instance_variable_defined?, :remove_
+instance_variable, :instance_of?, :kind_of?, :is_a?, :tap, :class, :clone, :display, :hash, :singleton_class, :singleton_method, :met
+hod, :public_send, :define_singleton_method, :public_method, :extend, :to_enum, :enum_for, :<=>, :===, :=~, :!~, :nil?, :eql?, :respo
+nd_to?, :freeze, :inspect, :object_id, :send, :to_s, :__send__, :!, :==, :!=, :__id__, :equal?, :instance_eval, :instance_exec]
+irb(main):021:0> pegaso.is_a? Pegaso
+=> true
+irb(main):022:0> pegaso.is_a? Volador
+=> true
+irb(main):023:0> Pegaso.instance_methods
+=> [:volar, :esfuerzo_volar=, :energia, :esfuerzo_volar, :esfuerzo_correr=, :correr, :esfuerzo_correr, :dup, :itself, :yield_self, :t
+hen, :taint, :tainted?, :untaint, :untrust, :untrusted?, :trust, :frozen?, :methods, :singleton_methods, :protected_methods, :private
+_methods, :public_methods, :instance_variables, :instance_variable_get, :instance_variable_set, :instance_variable_defined?, :remove_
+instance_variable, :instance_of?, :kind_of?, :is_a?, :tap, :class, :clone, :display, :hash, :singleton_class, :singleton_method, :met
+hod, :public_send, :define_singleton_method, :public_method, :extend, :to_enum, :enum_for, :<=>, :===, :=~, :!~, :nil?, :eql?, :respo
+nd_to?, :freeze, :inspect, :object_id, :send, :to_s, :__send__, :!, :==, :!=, :__id__, :equal?, :instance_eval, :instance_exec]
+irb(main):024:0> Pegaso.instance_methods false
+=> [:volar]
+irb(main):025:0> pegaso.methods false
+=> []
+irb(main):026:0> pegaso.private_methods
+=> [:initialize, :saltar, :irb_binding, :timeout, :DelegateClass, :sprintf, :format, :Integer, :Float, :String, :Array, :Hash, :local
+_variables, :trap, :readline, :rand, :p, :require, :autoload, :require_relative, :raise, :fail, :global_variables, :__method__, :__ca
+llee__, :__dir__, :system, :spawn, :srand, :binding, :autoload?, :eval, :iterator?, :block_given?, :catch, :throw, :loop, :warn, :rea
+dlines, :exec, :exit!, :abort, :gem, :trace_var, :untrace_var, :Rational, :at_exit, :`, :Complex, :select, :gem_original_require, :re
+spond_to_missing?, :caller, :caller_locations, :set_trace_func, :test, :fork, :exit, :gets, :proc, :lambda, :initialize_copy, :initia
+lize_clone, :initialize_dup, :pp, :sleep, :load, :URI, :syscall, :open, :printf, :print, :putc, :puts, :method_missing, :singleton_me
+thod_added, :singleton_method_removed, :singleton_method_undefined]
+irb(main):027:0> pegaso.saltar
+Traceback (most recent call last):
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        3: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        2: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        1: from (irb):27
+NoMethodError (private method `saltar' called for #<Pegaso:0x00000280ab7da108>)
+irb(main):028:0> pegaso.send(:saltar)
+=> "Saltando 5 mts de altura"
+irb(main):029:0> pegaso.send(:saltar, 10)
+=> "Saltando 10 mts de altura"
+irb(main):030:0> pegaso.methods
+=> [:volar, :esfuerzo_volar=, :energia, :esfuerzo_volar, :esfuerzo_correr=, :correr, :esfuerzo_correr, :dup, :itself, :yield_self, :t
+hen, :taint, :tainted?, :untaint, :untrust, :untrusted?, :trust, :frozen?, :methods, :singleton_methods, :protected_methods, :private
+_methods, :public_methods, :instance_variables, :instance_variable_get, :instance_variable_set, :instance_variable_defined?, :remove_
+instance_variable, :instance_of?, :kind_of?, :is_a?, :tap, :class, :clone, :display, :hash, :singleton_class, :singleton_method, :met
+hod, :public_send, :define_singleton_method, :public_method, :extend, :to_enum, :enum_for, :<=>, :===, :=~, :!~, :nil?, :eql?, :respo
+nd_to?, :freeze, :inspect, :object_id, :send, :to_s, :__send__, :!, :==, :!=, :__id__, :equal?, :instance_eval, :instance_exec]
+irb(main):031:0> metodo_volar = pegaso.method(:volar)
+=> #<Method: Pegaso#volar(distancia) pegaso.rb:31>
+irb(main):032:0> metodo_volar.class
+=> Method
+irb(main):033:0> metodo_volar.name
+=> :volar
+irb(main):034:0> metodo_volar.arity
+=> 1
+irb(main):035:0> metodo_volar.parameters
+=> [[:req, :distancia]]
+irb(main):036:0> metodo_volar.call(5)
+=> "Volando 5 mts como Pegaso"
+irb(main):037:0> pegaso.volar(5)
+=> "Volando 5 mts como Pegaso"
+irb(main):038:0> metodo_saltar = pegaso.method(:saltar)
+=> #<Method: Pegaso#saltar(desde=...) pegaso.rb:41>
+irb(main):039:0> metodo_saltar.arity
+=> -1
+irb(main):040:0> metodo_saltar.parameters
+=> [[:opt, :desde]]
+irb(main):041:0> metodo_saltar.call
+=> "Saltando 5 mts de altura"
+irb(main):042:0> Pegaso.instance_methods false
+=> [:volar]
+irb(main):043:0> metodo_volar2 = Pegaso.instance_method(:volar)
+=> #<UnboundMethod: Pegaso#volar(distancia) pegaso.rb:31>
+irb(main):044:0> metodo_volar2.class
+=> UnboundMethod
+irb(main):045:0> metodo_volar2.owner
+=> Pegaso
+irb(main):046:0> metodo_volar2.call(10)
+Traceback (most recent call last):
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        3: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        2: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        1: from (irb):46
+NoMethodError (undefined method `call' for #<UnboundMethod: Pegaso#volar(distancia) pegaso.rb:31>)
+irb(main):047:0> unicornio = Unicornio.new
+=> #<Unicornio:0x00000280abd693f8 @energia=100, @esfuerzo_volar=5, @esfuerzo_correr=1>
+irb(main):048:0> metodo_volar2.bind(unicornio).call(5)
+=> "Volando 5 mts como Pegaso"
+irb(main):049:0> metodo_volar2.bind(1).call(10)
+Traceback (most recent call last):
+        5: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        3: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        2: from (irb):49
+        1: from (irb):49:in `bind'
+TypeError (bind argument must be an instance of Pegaso)
+irb(main):050:0> metodo_clase = Pegaso.method(:especie)
+=> #<Method: Pegaso.especie() pegaso.rb:35>
+irb(main):051:0> metodo_clase.class
+=> Method
+irb(main):052:0> metodo_clase.owner
+=> #<Class:Pegaso>
+irb(main):053:0> metodo_clase.call
+=> "Pegaso"
+irb(main):054:1* class String
+irb(main):055:2*   def snake_case
+irb(main):056:2*     self.gsub " ", "_"
+irb(main):057:1*   end
+irb(main):058:0> end
+=> :snake_case
+irb(main):059:0> "A ver como queda con snake case".snake_case
+=> "A_ver_como_queda_con_snake_case"
+irb(main):060:1* class Fixnum
+irb(main):061:2*   def +(num)
+irb(main):062:2*     99
+irb(main):063:1*   end
+irb(main):064:0> end
+                                                                                                   Traceback (most recent call last):
+
+        37: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        36: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        35: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        34: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb.rb:400:in `start'
+        33: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb.rb:471:in `run'
+        32: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb.rb:471:in `catch'
+        31: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb.rb:472:in `block in run'
+        30: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb.rb:537:in `eval_input'
+        29: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb/ruby-lex.rb:150:in `each_top_level_statement'
+        28: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb/ruby-lex.rb:150:in `catch'
+        27: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb/ruby-lex.rb:151:in `block in each_top_level_statement'
+        26: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb/ruby-lex.rb:151:in `loop'
+        25: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb/ruby-lex.rb:154:in `block (2 levels) in each_top_level_statement'
+        24: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb/ruby-lex.rb:182:in `lex'
+        23: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb.rb:518:in `block in eval_input'
+        22: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb.rb:704:in `signal_status'
+        21: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb.rb:519:in `block (2 levels) in eval_input'
+        20: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/irb/input-method.rb:294:in `gets'
+        19: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/forwardable.rb:235:in `readmultiline'
+        18: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/forwardable.rb:235:in `readmultiline'
+        17: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:175:in `readmultiline'
+        16: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:238:in `inner_readline'
+        15: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:238:in `loop'
+        14: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:239:in `block in inner_readline'
+        13: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:270:in `read_io'
+        12: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:270:in `loop'
+        11: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:311:in `block in read_io'
+        10: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:240:in `block (2 levels) in inner_readline'
+         9: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:240:in `each'
+         8: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline.rb:241:in `block (3 levels) in inner_readline'
+         7: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline/line_editor.rb:834:in `input_key'
+         6: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline/line_editor.rb:792:in `normal_char'
+         5: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline/line_editor.rb:757:in `process_key'
+         4: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline/line_editor.rb:708:in `run_for_operators'
+         3: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline/line_editor.rb:758:in `block in process_key'
+         2: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline/line_editor.rb:758:in `call'
+         1: from D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline/line_editor.rb:1640:in `em_delete_prev_char'
+D:/Applications/Ruby27-x64/lib/ruby/2.7.0/reline/line_editor.rb:1046:in `byteslice!': no implicit conversion of nil into String (Type
+Error)
+
+
+PS D:\Develop\Ruby\UNaHur\Clase 3\src> irb
+irb(main):001:0> load "pegaso.rb"
+=> true
+irb(main):002:0> Pegaso.send(:especie)
+=> "Pegaso"
+irb(main):003:1* Pegaso.send(:define_method, :comer) {|cantidad_comida|
+irb(main):004:1*   self.energia += cantidad_comida
+irb(main):005:0> }
+=> :comer
+irb(main):006:0> Pegaso.instance_methods false
+=> [:volar, :comer]
+irb(main):007:0> p = Pegaso.new
+=> #<Pegaso:0x0000029cb9c1f388 @energia=100, @esfuerzo_volar=5, @esfuerzo_correr=1>
+irb(main):008:0> p.energia
+=> 100
+irb(main):009:0> p.comer 40
+Traceback (most recent call last):
+        5: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        3: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        2: from (irb):9
+        1: from (irb):4:in `block in irb_binding'
+NoMethodError (undefined method `energia=' for #<Pegaso:0x0000029cb9c1f388>)
+Did you mean?  energia
+irb(main):010:1* Pegaso.send(:define_method, :comer) {|cantidad_comida|
+irb(main):011:1*   self.instance_variable_set(:energia, self.energia + cantidad_comida)
+irb(main):012:0> }
+=> :comer
+irb(main):013:0> p.energia
+=> 100
+irb(main):014:0> p.comer 20
+Traceback (most recent call last):
+        6: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        5: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        4: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        3: from (irb):14
+        2: from (irb):11:in `block in irb_binding'
+        1: from (irb):11:in `instance_variable_set'
+NameError (`energia' is not allowed as an instance variable name)
+irb(main):015:1* Pegaso.send(:define_method, :comer) {|cantidad_comida|
+irb(main):016:1*   self.instance_variable_set(:@energia, self.energia + cantidad_comida)
+irb(main):017:0> }
+=> :comer
+irb(main):018:0> pegaso.energia
+Traceback (most recent call last):
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        3: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        2: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        1: from (irb):18
+NameError (undefined local variable or method `pegaso' for main:Object)
+irb(main):019:0> p.energia
+=> 100
+irb(main):020:0> p.comer(20)
+=> 120
+irb(main):021:0> Pegaso.intance_methods false
+Traceback (most recent call last):
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        3: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        2: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        1: from (irb):21
+NoMethodError (undefined method `intance_methods' for Pegaso:Class)
+Did you mean?  instance_methods
+               instance_method
+irb(main):022:0> Pegaso.instance_methods false
+=> [:volar, :comer]
+irb(main):023:0> p = Pegaso.new
+=> #<Pegaso:0x0000029cb9e11b00 @energia=100, @esfuerzo_volar=5, @esfuerzo_correr=1>
+irb(main):024:0> p.methods false
+=> []
+irb(main):025:1* p.define_singleton_method(:girar) { |vueltas|
+irb(main):026:1*   puts "Estoy mareado" if vueltas > 5
+irb(main):027:0> }
+=> :girar
+irb(main):028:0> p.methods false
+=> [:girar]
+irb(main):029:0> p.girar(10)
+Estoy mareado
+=> nil
+irb(main):030:0> p.girar(2)
+=> nil
+irb(main):031:0> otro_pegaso = Pegaso.new
+=> #<Pegaso:0x0000029cb992a3f8 @energia=100, @esfuerzo_volar=5, @esfuerzo_correr=1>
+irb(main):032:0> otro_pegaso.girar(10)
+Traceback (most recent call last):
+        4: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `<main>'
+        3: from D:/Applications/Ruby27-x64/bin/irb.cmd:31:in `load'
+        2: from D:/Applications/Ruby27-x64/lib/ruby/gems/2.7.0/gems/irb-1.2.6/exe/irb:11:in `<top (required)>'
+        1: from (irb):32
+NoMethodError (undefined method `girar' for #<Pegaso:0x0000029cb992a3f8>)
+irb(main):033:0> p.class
+=> Pegaso
+irb(main):034:0> p.singleton_class
+=> #<Class:#<Pegaso:0x0000029cb9e11b00>>
+irb(main):035:0> otro_pegaso.singleton_class
+=> #<Class:#<Pegaso:0x0000029cb992a3f8>>
+irb(main):036:0> otro_pegaso.class
+=> Pegaso
+irb(main):037:0> p.singleton_class.superclass
+=> Pegaso
+irb(main):038:0> Unicornio.class
+=> Class
+irb(main):039:0> Unicornio.singleton_class
+=> #<Class:Unicornio>
+irb(main):040:0> Unicornio.singleton_class.class
+=> Class
+irb(main):041:0> Unicornio.singleton_class.superclass
+=> #<Class:Pegaso>
+irb(main):042:0> Class.ancestors
+=> [Class, Module, Object, Kernel, BasicObject]
+irb(main):043:0>
